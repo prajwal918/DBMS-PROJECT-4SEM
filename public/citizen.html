@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Portal | EcoTrack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <ion-icon name="leaf" class="text-accent"></ion-icon>
+                    EcoTrack
+                </a>
+                <div class="nav-links">
+                    <div class="stats-badge">
+                        <ion-icon name="ribbon-outline"></ion-icon>
+                        <span id="points-display">0</span> Green Points
+                    </div>
+                    <a href="citizen.html" class="active"><ion-icon name="person-outline"></ion-icon></a>
+                    <a href="index.html"><ion-icon name="log-out-outline"></ion-icon></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 40px 0;">
+        <div class="page-title animate-fade-in">
+            <h1>Welcome back, Citizen! 👋</h1>
+            <p>Help keep your city clean and earn rewards</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Schedule Pickup -->
+            <div class="card animate-fade-in-delay-1">
+                <div class="card-icon accent">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </div>
+                <h2 class="mb-2">Schedule Special Pickup</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    For e-waste (laptops, batteries, phones) or bulky furniture items.
+                </p>
+                <form id="pickup-form">
+                    <div class="form-group">
+                        <label>Pickup Type</label>
+                        <select id="pickup-type" class="form-control">
+                            <option value="E-Waste">🖥️ E-Waste (Electronics)</option>
+                            <option value="Bulky">🛋️ Bulky Furniture</option>
+                            <option value="Hazardous">⚠️ Hazardous Materials</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description / Items</label>
+                        <textarea id="pickup-details" class="form-control" rows="3"
+                            placeholder="e.g., Old Dell laptop and 2 monitors"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                        Schedule Pickup
+                    </button>
+                </form>
+            </div>
+
+            <!-- Report Overflow -->
+            <div class="card animate-fade-in-delay-2">
+                <div class="card-icon" style="background: rgba(239, 68, 68, 0.15); color: var(--danger);">
+                    <ion-icon name="warning-outline"></ion-icon>
+                </div>
+                <h2 class="mb-2">Report Overflowing Bin</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Help us keep the city clean by reporting full or damaged bins.
+                </p>
+                <form id="report-form">
+                    <div class="form-group">
+                        <label>Location Description</label>
+                        <input type="text" id="report-location" class="form-control"
+                            placeholder="e.g. Corner of Main St and Park Ave">
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Photo (Optional)</label>
+                        <div class="upload-area">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Drag & drop or click to upload</p>
+                            <small style="color: var(--text-secondary);">PNG, JPG up to 5MB</small>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger" style="width: 100%;">
+                        <ion-icon name="alert-circle-outline"></ion-icon>
+                        Report Issue
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card animate-fade-in-delay-3" style="margin-top: 28px;">
+            <h3 class="mb-4">Your Recent Activity</h3>
+            <div id="activity-list" style="background: rgba(0,0,0,0.2); border-radius: 12px;">
+                <div class="list-item">
+                    <div>
+                        <div style="font-weight: 600;">E-Waste Pickup Scheduled</div>
+                        <small style="color: var(--text-secondary);">2 days ago</small>
+                    </div>
+                    <span class="status-badge status-collected">+10 pts</span>
+                </div>
+                <div class="list-item">
+                    <div>
+                        <div style="font-weight: 600;">Reported Overflowing Bin</div>
+                        <small style="color: var(--text-secondary);">5 days ago</small>
+                    </div>
+                    <span class="status-badge status-collected">+10 pts</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script src="js/citizen.js"></script>
+</body>
+
+</html>

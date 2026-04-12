@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Portal | EcoTrack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <ion-icon name="bus" class="text-info"></ion-icon>
+                    EcoTrack Driver
+                </a>
+                <div class="nav-links">
+                    <div class="stats-badge"
+                        style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2); color: var(--info);">
+                        <ion-icon name="location-outline"></ion-icon>
+                        North Zone
+                    </div>
+                    <a href="driver.html" class="active"><ion-icon name="bus-outline"></ion-icon></a>
+                    <a href="index.html"><ion-icon name="log-out-outline"></ion-icon></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 40px 0;">
+        <div class="page-title animate-fade-in">
+            <h1>Good Morning, Driver! 🚛</h1>
+            <p>Your optimized route for today - January 26, 2026</p>
+        </div>
+
+        <!-- Stats Row -->
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px;">
+            <div class="stat-card animate-fade-in-delay-1">
+                <div class="stat-icon"
+                    style="background: rgba(16, 185, 129, 0.15); color: var(--accent); width: 48px; height: 48px; font-size: 1.25rem;">
+                    <ion-icon name="checkmark-circle-outline"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3 id="collected-count">0</h3>
+                    <p>Collected</p>
+                </div>
+            </div>
+            <div class="stat-card animate-fade-in-delay-1">
+                <div class="stat-icon"
+                    style="background: rgba(239, 68, 68, 0.15); color: var(--danger); width: 48px; height: 48px; font-size: 1.25rem;">
+                    <ion-icon name="time-outline"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3 id="pending-count">0</h3>
+                    <p>Pending</p>
+                </div>
+            </div>
+            <div class="stat-card animate-fade-in-delay-2">
+                <div class="stat-icon"
+                    style="background: rgba(245, 158, 11, 0.15); color: var(--warning); width: 48px; height: 48px; font-size: 1.25rem;">
+                    <ion-icon name="alert-circle-outline"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3 id="overflow-count">0</h3>
+                    <p>Overflowing</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Route List -->
+            <div class="card animate-fade-in-delay-1">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2>Today's Route</h2>
+                    <span class="status-badge status-pending" id="route-status">In Progress</span>
+                </div>
+                <div id="route-list"
+                    style="background: rgba(0,0,0,0.2); border-radius: 12px; max-height: 400px; overflow-y: auto;">
+                    <div class="list-item" style="justify-content: center; padding: 40px;">
+                        <p style="color: var(--text-secondary);">Loading route...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weigh Station -->
+            <div class="card animate-fade-in-delay-2">
+                <div class="card-icon warning">
+                    <ion-icon name="scale-outline"></ion-icon>
+                </div>
+                <h2 class="mb-2">Weigh Station Log</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Log incoming waste at the recycling center.
+                </p>
+                <form id="waste-form">
+                    <div class="form-group">
+                        <label>Waste Type</label>
+                        <select id="waste-type" class="form-control">
+                            <option value="Plastic">♻️ Plastic</option>
+                            <option value="Glass">🫙 Glass</option>
+                            <option value="Metal">🔩 Metal</option>
+                            <option value="Bio">🌱 Bio / Organic</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="waste-weight" class="form-control" step="0.1" placeholder="e.g. 15.5">
+                    </div>
+                    <button type="submit" class="btn"
+                        style="width: 100%; background: linear-gradient(135deg, var(--warning), #d97706);">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                        Log Entry
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/driver.js"></script>
+</body>
+
+</html>

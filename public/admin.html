@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard | EcoTrack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <ion-icon name="stats-chart" class="text-purple"></ion-icon>
+                    EcoTrack Analytics
+                </a>
+                <div class="nav-links">
+                    <a href="admin.html" class="active"><ion-icon name="stats-chart-outline"></ion-icon></a>
+                    <a href="index.html"><ion-icon name="log-out-outline"></ion-icon></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 40px 0;">
+        <div class="page-title animate-fade-in">
+            <h1>City Intelligence Dashboard 📊</h1>
+            <p>Real-time insights into waste management and recycling efficiency</p>
+        </div>
+
+        <!-- Stats Row -->
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 28px;">
+            <div class="stat-card animate-fade-in-delay-1">
+                <div class="stat-icon" style="background: rgba(16, 185, 129, 0.15); color: var(--accent);">
+                    <ion-icon name="leaf-outline"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3>89.2%</h3>
+                    <p>Recycling Rate</p>
+                </div>
+            </div>
+            <div class="stat-card animate-fade-in-delay-1">
+                <div class="stat-icon" style="background: rgba(59, 130, 246, 0.15); color: var(--info);">
+                    <ion-icon name="trending-up-outline"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3>+12%</h3>
+                    <p>This Month</p>
+                </div>
+            </div>
+            <div class="stat-card animate-fade-in-delay-2">
+                <div class="stat-icon" style="background: rgba(139, 92, 246, 0.15); color: var(--purple);">
+                    <ion-icon name="people-outline"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3 id="total-citizens">3</h3>
+                    <p>Active Citizens</p>
+                </div>
+            </div>
+            <div class="stat-card animate-fade-in-delay-2">
+                <div class="stat-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--warning);">
+                    <ion-icon name="flash-outline"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3>35%</h3>
+                    <p>Fuel Saved</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="dashboard-grid" style="margin-bottom: 28px;">
+            <div class="card animate-fade-in-delay-1">
+                <h2 class="mb-4">Recycling Efficiency</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">Weight distribution by waste type (kg)</p>
+                <div style="height: 280px; position: relative;">
+                    <canvas id="efficiencyChart"></canvas>
+                </div>
+            </div>
+            <div class="card animate-fade-in-delay-2">
+                <h2 class="mb-4">Collection Trends</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">E-waste collection requests over 6 months
+                </p>
+                <div style="height: 280px; position: relative;">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="card animate-fade-in-delay-3">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>🏆 Top Green Citizens</h2>
+                <span class="status-badge" style="background: rgba(139, 92, 246, 0.15); color: var(--purple);">
+                    This Month
+                </span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th style="text-align: right;">Green Points</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                            Loading leaderboard...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
