@@ -141,7 +141,28 @@ app.use((err, req, res, next) => {
     res.status(500).json({ success: false, message: err.message });
 });
 
-// Start Server
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+// Global process error handlers for graceful shutdown
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception:', err);
+    process.exit(1);
 });
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+    process.exit(1);
+});
+
+// Start Server
+try {
+    const server = app.listen(PORT, () => {
+        console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+    
+    server.on('error', (err) => {
+        console.error('Server encountered an error:', err);
+        process.exit(1);
+    });
+} catch (err) {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+}

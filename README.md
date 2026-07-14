@@ -6,8 +6,24 @@ This repository is built with strict enterprise engineering standards, focusing 
 
 ```mermaid
 graph TD
-    A[Client] --> B(Application Container)
-    B --> C{Core Logic}
+    subgraph Frontend [Client Tier]
+        C[Citizen Browser UI] -->|HTTP/REST| API[Express API Router]
+        D[Driver Browser UI] -->|HTTP/REST| API
+        E[Admin Browser UI] -->|HTTP/REST| API
+    end
+    
+    subgraph Backend [Application Tier]
+        API -->|Async Handlers| SL[Service Logic]
+        SL -->|SQL Queries| DB_POOL[mssql/tedious Connection Pool]
+    end
+    
+    subgraph Database [Data Tier]
+        DB_POOL -->|TCP/IP| MS[Microsoft SQL Server]
+        MS --> T_USERS[(Users Table)]
+        MS --> T_BINS[(Bins Table)]
+        MS --> T_REQS[(Requests Table)]
+        MS --> T_WASTE[(WasteLogs Table)]
+    end
 ```
 
 ## 🚀 Setup Instructions
