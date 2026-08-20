@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.py text eol=lf diff=python
+*.sh text eol=lf executable
+*.js text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.pdf binary
+*.docx binary
