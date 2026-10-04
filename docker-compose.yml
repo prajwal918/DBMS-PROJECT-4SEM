@@ -6,3 +6,12 @@ services:
       - "8080:80"
     volumes:
       - .:/app
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
